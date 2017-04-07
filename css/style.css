@@ -1,0 +1,15 @@
+.containerDiv {
+    height: 50px;
+}
+
+.divInLine {
+    margin: 0;
+    width: 50px;
+    height: inherit;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+#tableForm {
+    margin-bottom: 30px;
+}
