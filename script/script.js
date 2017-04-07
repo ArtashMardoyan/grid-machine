@@ -7,8 +7,6 @@
         container: null,
         title: null,
         colorizeBtn: null,
-        inlineDiv: null,
-        containDiv: null,
         countInline: 0,
         countContain: 1
     };
@@ -18,8 +16,6 @@
         board.container = document.getElementById('coordinate');
         board.title = document.getElementById('title');
         board.colorizeBtn = document.createElement('input');
-        board.inlineDiv = document.getElementsByClassName('divInLine');
-        board.containDiv = document.getElementsByClassName('containerDiv');
         bindEvents();
     }
 
@@ -69,20 +65,22 @@
     }
 
     function colorize() {
+        var inlineDiv = document.getElementsByClassName('divInLine');
+        var containDiv = document.getElementsByClassName('containerDiv');
         board.colorizeBtn.disabled = true;
         document.getElementById('draw').disabled = true;
-        if (board.countContain > board.containDiv.length) {
+        if (board.countContain > containDiv.length) {
             board.colorizeBtn.disabled = false;
             document.getElementById('draw').disabled = false;
             board.countInline = 0;
             board.countContain = 1;
             return;
         }
-        if (board.countInline < board.inlineDiv.length) {
-            board.inlineDiv[board.countInline].style.backgroundColor = randomColor();
-            board.countInline += board.containDiv.length;
+        if (board.countInline < inlineDiv.length) {
+            inlineDiv[board.countInline].style.backgroundColor = randomColor();
+            board.countInline += containDiv.length;
             setTimeout(colorize, 500);
-            if (board.countInline >= board.inlineDiv.length) {
+            if (board.countInline >= inlineDiv.length) {
                 board.countInline = board.countContain;
                 board.countContain++;
             }
